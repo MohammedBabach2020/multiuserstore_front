@@ -1,0 +1,64 @@
+<div class="container h-100">
+
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-12">
+      <mat-card>
+
+        @if (contentIndex == 0) {
+        <mat-card-content [@slideInOut]>
+          <mat-form-field class="store-name-field field-full-width">
+            <mat-label>Would you please name your store</mat-label>
+            <!-- [formControl]="emailFormControl" -->
+            <input type="text" matInput [formControl]="store_name" placeholder="type here..">
+          </mat-form-field>
+        </mat-card-content>
+        }
+        @if (contentIndex ==1 ) {
+
+        <mat-card-content [@slideInOut]>
+          <mat-form-field class="store-description-field field-full-width">
+            <mat-label>Would you please describe your store</mat-label>
+            <input type="text" matInput [formControl]="store_description" placeholder="type here..">
+          </mat-form-field>
+
+        </mat-card-content>
+        }
+
+        @if (contentIndex ==2) {
+        <mat-card-content [@slideInOut]>
+          <mat-label>Would you please choose Categories related to your store</mat-label>
+          <mat-chip-listbox aria-label="Fish selection" multiple>
+            <mat-chip-option (click)="save_selected_categories()"
+              *ngFor="let cat of Categories">{{cat.name}}</mat-chip-option>
+          </mat-chip-listbox>
+        </mat-card-content>
+
+        }
+
+
+
+        <mat-card-footer class="d-block mx-auto mb-2">
+          @if (contentIndex > 0) {
+          <button (click)="goPrevious()" mat-stroked-button color="primary" class="mx-1">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+            previous
+          </button>
+          }
+
+
+          @if (contentIndex < 2) { <button (click)="goNext()" mat-stroked-button color="primary" class="mx-1">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            Next
+            </button>
+            }
+
+            @if (contentIndex == 2) { <button (click)="create()" mat-stroked-button color="primary" class="mx-1">
+              <mat-icon>store</mat-icon>
+              Let's go
+            </button>
+            }
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>

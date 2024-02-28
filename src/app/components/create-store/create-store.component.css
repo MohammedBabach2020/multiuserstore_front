@@ -1,0 +1,11 @@
+mat-card {
+  height: 50%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.field-full-width,
+mat-card-content {
+  width: 100%;
+}
