@@ -36,20 +36,13 @@ export class SignInComponent {
   }
 
   async signIn(): Promise<void> {
+    try {
+      const auth = await this.authService.signIn(this.emailFormControl.value, this.pwdFormControl.value);
 
-    const signIn = await this.authService.signIn(this.emailFormControl.value, this.pwdFormControl.value).then(
-
-      () => {
-        if (this.isAuth.isAuthenticated()) {
-          this.router.navigate(['/createStore']);
-        }
-        else {
-          console.log("not Auth")
-        }
-      }
-    );
-
-
+    } catch (error) {
+      console.error("An error occurred during sign in:", error);
+      // Handle error appropriately, such as displaying an error message to the user
+    }
   }
 
 

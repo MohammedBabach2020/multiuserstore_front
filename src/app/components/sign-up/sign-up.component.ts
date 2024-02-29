@@ -53,12 +53,7 @@ export class SignUpComponent {
       this.pwdFormControl.value,
       this.pwdConfirmationFormControl.value);
 
-    if (this.isAuth.isAuthenticated()) {
-      this.router.navigate(['/createStore']);
-    }
-    else {
-      console.log("not Auth")
-    }
+
   }
 
 }
